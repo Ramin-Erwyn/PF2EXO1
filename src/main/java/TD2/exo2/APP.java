@@ -43,8 +43,8 @@ public class APP {
         System.out.println("son accès et t'il  autorisé 100<=taille=<200 et poids<=150.0 : " + AccesAutorise.test(titi)+"\n");
         //pour grominet
         System.out.println("grominet");
-        System.out.println("sa taille est t'elle trop petite < à 100cm ? : " + TaillePetite.test(grominet));
-        System.out.println("sa taille est t'elle trop grande > à 200cm ? : "+ TailleGrande.test(grominet));
+        System.out.println("sa taille est t'elle trop petite < à 100cm  : " + TaillePetite.test(grominet));
+        System.out.println("sa taille est t'elle trop grande > à 200cm : "+ TailleGrande.test(grominet));
         System.out.println("sa taille est t'elle incorrecte < à 100cm et  à 200cm : " + TailleIncorrecte.test(grominet));
         System.out.println("est t'il trop lourd Poids trop lourd > à 150.0kg : " + PoidsLourd.test(grominet));
         System.out.println("son accès et t'il  autorisé 100<=taille=<200 et poids<=150.0 : " + AccesAutorise.test(grominet)+"\n");
