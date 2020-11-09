@@ -1,5 +1,7 @@
 package TD2.exo2;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 
 public class APP {
@@ -49,9 +51,47 @@ public class APP {
         System.out.println("est t'il trop lourd Poids trop lourd > à 150.0kg : " + PoidsLourd.test(grominet));
         System.out.println("son accès et t'il  autorisé 100<=taille=<200 et poids<=150.0 : " + AccesAutorise.test(grominet)+"\n");
     }
+    public static void q22(){
+//des new ppl
+        Paire<Integer, Double> bob = new Paire<>(80, 15.0);
+        Paire<Integer, Double> pat = new Paire<>(120, 123.0);
+        Paire<Integer, Double> titi = new Paire<>(120, 13.0);
+        Paire<Integer, Double> grominet = new Paire<>(20, 240.0);
 
+        //predicat
+        Predicate<Paire<Integer,Double>> TaillePetite = x -> x.fst < 100;
+        Predicate<Paire<Integer,Double>> TailleGrande = x -> x.fst > 200;
+        Predicate<Paire<Integer,Double>> TailleIncorrecte = TaillePetite.or(TailleGrande);
+        Predicate<Paire<Integer,Double>> TailleCorrecte = TailleIncorrecte.negate();
+        Predicate<Paire<Integer,Double>> PoidsLourd = x -> x.snd > 150.0;
+        Predicate<Paire<Integer,Double>> PoidCorrect = PoidsLourd.negate();
+        Predicate<Paire<Integer,Double>> AccesAutorise = TailleCorrecte.and(PoidCorrect);
+
+        List<Paire<Integer, Double>> liste = new ArrayList<>();
+        liste.add(bob);
+        liste.add(pat);
+        liste.add(titi);
+        liste.add(grominet);
+
+        List<Predicate<Paire<Integer, Double>>> ListeDePredicats = new ArrayList<>();
+        ListeDePredicats.add(TailleCorrecte);
+        ListeDePredicats.add(PoidCorrect);
+        ListeDePredicats.add(AccesAutorise);
+
+       /*  à voir c'est pas fini faire une boucle for 
+
+       filtragePredicatif<Paire<Integer,Double>> filtre = (predicates, addition) -> {
+            Predicate<Paire<Integer, Double>> Conpo = s -> true;
+
+        for
+
+        }
+        */
+    }
     public static void main(String[] args) {
         System.out.println("\n\n\nQuestion 1 de l'Exo 2\n\n\n");
         q21();
+        System.out.println("\n\n\nQuestion 2 de l'Exo 2\n\n\n");
+        q22();
     }
 }
