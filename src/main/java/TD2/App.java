@@ -1,5 +1,7 @@
 package TD2;
 
+import java.util.*;
+
 public class App {
     //Question 1.1
     public static void q11(){
@@ -17,9 +19,26 @@ public class App {
 
 
 }
+/*
+    public static <ToString> void q21()
+    {
+        List<String> List = new ArrayList<>();
+        List.add("a");
 
+        ToString<String>> Premierliste = object -> {
+            String liste = "";
+            for (String val: Objects) {
+                liste = liste + val + ", ";
+            }
+            return liste;
+        };*/
+
+
+
+    
     public static void main(String[] args) {
         System.out.println("#########question1###########");
         q11();
+
     }
 }
