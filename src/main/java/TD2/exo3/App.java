@@ -1,12 +1,10 @@
 package TD2.exo3;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.*;
-import java.util.function.Predicate;
+
 
 
 public class App {
@@ -92,6 +90,14 @@ public class App {
 
     //----------------q6-------------- pareil que avant mais  n’ayant pas la moyenne
     static final Predicate<Etudiant> naPasLaMoyennev2 = e -> moyenne(e) == null || moyenne(e) < 10.0 ;
+    /* A VOIR AVEC Mr POizat pour c'est pas bon todo test
+     Predicate<Etudiant,Annee> naPasLaMoyennev2 = (e,a1) -> {
+            Double laMoyenne = moyenneEtudiant.moyenne(e);
+            if (laMoyenne==null || laMoyenne<10) return true;
+            return false;
+        };
+     */
+
 
     //--------------q7-----------------savoir si un étudiant va en session 2.
     static final Predicate<Etudiant> session2v1 = e -> aDef.or(aNoteEliminatoire).or(naPasLaMoyennev1).test(e);//le or ou le not
