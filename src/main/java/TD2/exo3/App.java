@@ -86,7 +86,13 @@ public class App {
     //----------------q5-------------------
 //{probleme NullPointerException sur l'etudiant de moin de 6 avec un vieux 5}  à voir todo
     static final Predicate<Etudiant> naPasLaMoyennev1 = e -> moyenne(e) < 10.0;
-
+/* A VOIR AVEC Mr POizat pour c'est pas bon todo test meme probleme
+     Predicate<Etudiant,Annee> naPasLaMoyennev2 = (e,a1) -> {
+            Double laMoyenne = moyenneEtudiant.moyenne(e);
+            if (laMoyenne<10) return true;
+            return false;
+        };
+     */
 
     //----------------q6-------------- pareil que avant mais  n’ayant pas la moyenne
     static final Predicate<Etudiant> naPasLaMoyennev2 = e -> moyenne(e) == null || moyenne(e) < 10.0 ;
