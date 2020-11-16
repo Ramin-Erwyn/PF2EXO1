@@ -1,7 +1,11 @@
 package TD2.exo3;
-
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.*;
-
 import java.util.function.Predicate;
 
 
@@ -44,6 +48,53 @@ public class App {
         return false;
     };
 
+    //--------------q4-------------
+    public static Double moyenne(Etudiant etudiant) {
+/* moyenne moyenneEtudiant = e -> {
+            Predicate<Etudiant,Annee> aDEF = (b,a) -> {
+                if (b.notes().containsKey(m1) && b.notes().containsKey(m2) && b.notes().containsKey(m3))
+                    return false;
+                return true;
+            };
+*/
+        //  if (aDEF.test(e,a1)) return null; double boucle
+        /*Double numerateur = 0D;
+        Double denominateur = 0D;
+
+        for (UE ue : a1.ues()) {
+            for (Matiere mapKey : ue.ects().keySet()) {
+                numerateur = numerateur + Etudiant.notes().get(mapKey) * ue.ects().get(mapKey);
+                denominateur = denominateur + ue.ects().get(mapKey);
+            }
+        }
+        return numerateur / denominateur;
+    };*/
+
+        if(aDef.test(etudiant))
+            return null;
+
+        Double numerateur = 0D;
+        Double denominateur = 0D;
+        Map<Matiere, Integer> LesMatECTS = getAllMatiereFromYear(Etudiant); //les matière de l'anne pour les etudiants todo
+
+        //for (Matiere matiere : ue.ects().keySet()) {
+        for (Matiere matiere : LesMatECTS.keySet()) {
+
+            numerateur += etudiant.notes().get(matiere) * LesMatECTS.get(matiere);
+            denominateur += LesMatECTS.get(matiere);
+        }
+        return numerateur / denominateur;
+    }
+    //----------------q5-------------------
+//{probleme NullPointerException sur l'etudiant de moin de 6 avec un vieux 5}  à voir todo
+    static final Predicate<Etudiant> naPasLaMoyennev1 = e -> moyenne(e) < 10.0;
+
+
+    //----------------q6-------------- pareil que avant mais  n’ayant pas la moyenne
+    static final Predicate<Etudiant> naPasLaMoyennev2 = e -> moyenne(e) == null || moyenne(e) < 10.0 ;
+
+    //--------------q7-----------------savoir si un étudiant va en session 2.
+    static final Predicate<Etudiant> session2v1 = e -> aDef.or(aNoteEliminatoire).or(naPasLaMoyennev1).test(e);//le or ou le not
 
     public static void main(String[] args) {
         Matiere m1 = new Matiere("MAT1");
@@ -65,18 +116,20 @@ public class App {
         e3.noter(m2, 5.0);
         e3.noter(m3, 14.0);
 
-        System.out.println("EXERCICE 3");
-        System.out.println("question 1");
+        System.out.println("q31");
         afficheSi("** Tous les etudiants **", listeEtudiants, a1);
-
-
-        System.out.println("question 2");
+        System.out.println("q32");
         afficheSi("** Défaillant **", aDef, a1);
-
-        System.out.println("question 3");
+        System.out.println("q33");
         afficheSi("** ETUDIANTS note eliminé **", aNoteEliminatoire, a1);
-
-
+        System.out.println("q34");
+        System.out.println(moyenne(e2));
+        System.out.println("q35");
+        afficheSi("** ETUDIANTS pas la moyenne **", naPasLaMoyennev1, a1);
+        System.out.println("q36");
+        afficheSi("** ETUDIANTS pas la moyenne **", naPasLaMoyennev2, a1);
+        System.out.println("q37");
+       
     }
 
 
