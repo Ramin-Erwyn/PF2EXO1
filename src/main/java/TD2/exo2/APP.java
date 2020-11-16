@@ -78,7 +78,7 @@ public class APP {
         ListeDePredicats.add(PoidCorrect);
         ListeDePredicats.add(AccesAutorise);
 
-       /*  à voir c'est pas fini faire une boucle for 
+       /*  à voir c'est pas fini faire une boucle for
 
        filtragePredicatif<Paire<Integer,Double>> filtre = (predicates, addition) -> {
             Predicate<Paire<Integer, Double>> Conpo = s -> true;
