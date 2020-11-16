@@ -1,9 +1,6 @@
 package TD2.exo3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class App {
@@ -17,6 +14,26 @@ public class App {
 
         }
     }
+    public static void afficheToujours(String entete,Annee annee){
+        afficheSi2(entete, e->true, annee);
+    }
+    public static final Predicate<Etudiant> toujours =x-> true;
+    public static final Set<Matiere> toutesLesMatieresDeLAnnee(Annee a){
+        Set<Matiere> rtr =new HashSet<>();
+        for(UE ue:a.ues()){
+            rtr.addAll(ue.ects().keySet());
+        }
+        return rtr;
+    }
+public static final Predicate<Etudiant> defaillant =e->{
+      Set<Matiere> toutesLesMatieresDeLetudiant =   App.toutesLesMatieresDeLAnnee(e.annee());
+      for(Matiere m :toutesLesMatieresDeLetudiant){
+          if(e.notes().containsKey(m)){
+              return false;
+          }
+      }
+      return true;
+};
         /*
         Iterator<Etudiant> itEtudiants =annee.etudiant().
 
@@ -104,15 +121,21 @@ Map<Etudiant,Double> notes = Map.of(e1,10.0,e2, 14.0,e3,9.0);
                 return true;
             }
         };
-        afficheSi2(ENTETE_TOUS,etudiant -> true,a1);
-        Predicate<Etudiant> estDefaillant=etudiant e ->{
-
+        afficheSi2("ENTETE_TOUS",etudiant -> true,a1);
+       /* Predicate<Etudiant> estDefaillant=etudiant e ->{
+            if (e.notes().containsKey( ) && e.notes().containsKey( ) && e.notes().containsKey( )) //faire une boucle
+                return false;
+            return true;
         };
         afficheSi2("Tous les etidiants",estDefaillant,a1);
+*/
+
+
     }
 
     public static void main(String[] args) {
         System.out.println("EXERCICE 3");
         q31();
+        //q32();
     }
 }
