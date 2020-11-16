@@ -28,11 +28,11 @@ public class App {
 public static final Predicate<Etudiant> defaillant =e->{
       Set<Matiere> toutesLesMatieresDeLetudiant =   App.toutesLesMatieresDeLAnnee(e.annee());
       for(Matiere m :toutesLesMatieresDeLetudiant){
-          if(e.notes().containsKey(m)){
-              return false;
+          if(!e.notes().containsKey(m)){
+              return true;
           }
       }
-      return true;
+      return false;
 };
         /*
         Iterator<Etudiant> itEtudiants =annee.etudiant().
@@ -135,7 +135,10 @@ Map<Etudiant,Double> notes = Map.of(e1,10.0,e2, 14.0,e3,9.0);
 
     public static void main(String[] args) {
         System.out.println("EXERCICE 3");
+        System.out.println("question 1");
+
         q31();
-        //q32();
+        System.out.println("question 2");
+        q32();
     }
 }
