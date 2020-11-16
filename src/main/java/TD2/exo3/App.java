@@ -95,7 +95,16 @@ public class App {
 
     //--------------q7-----------------savoir si un étudiant va en session 2.
     static final Predicate<Etudiant> session2v1 = e -> aDef.or(aNoteEliminatoire).or(naPasLaMoyennev1).test(e);//le or ou le not
-
+    // --------------Q8-----------------
+//cours avec le truc google import consumer etudiant probleme todo
+    public static void afficheSiv2(String entete, Predicate<Etudiant> predicate, Annee annee, Consumer<Etudiant> affichageE) {
+        System.out.println(entete);
+        annee.etudiants().forEach(e -> {
+            if(predicate.test(e))
+                affichageE.accept(e);
+        });
+        System.out.println("\n");
+    }
     public static void main(String[] args) {
         Matiere m1 = new Matiere("MAT1");
         Matiere m2 = new Matiere("MAT2");
@@ -129,7 +138,9 @@ public class App {
         System.out.println("q36");
         afficheSi("** ETUDIANTS pas la moyenne **", naPasLaMoyennev2, a1);
         System.out.println("q37");
-       
+        System.out.println("q38");
+        // afficheSiv2("** TOUS LES ETUDIANTS **", listeEtudiants, a1,listeEtudiants);//same que la 1 beug
+        //afficheSi2("Tous les etidiants", tousLesEtudiantsv2, a1);
     }
 
 
