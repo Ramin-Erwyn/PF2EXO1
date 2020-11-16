@@ -2,6 +2,7 @@ package TD2.exo3;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Etudiant {
     private String prenom;
@@ -63,7 +64,7 @@ public class Etudiant {
         rtr.append(String.format("%s %s %s\n", numero, prenom, nom));
         for (UE ue : annee.ues()) {
             rtr.append(String.format("%s\n", ue.nom()));
-            for (Map.Entry<Matiere, Integer> ects : ue.ects().entrySet()) {
+            for (Entry<Matiere, Integer> ects : ue.ects().entrySet()) {
                 Matiere matiere = ects.getKey();
                 Integer credits = ects.getValue();
                 String note = notes.containsKey(matiere) ? notes.get(matiere).toString() : "DEF";
