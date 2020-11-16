@@ -78,8 +78,8 @@ public class App {
         //for (Matiere matiere : ue.ects().keySet()) {
         for (Matiere matiere : LesMatECTS.keySet()) {
 
-            numerateur += etudiant.notes().get(matiere) * LesMatECTS.get(matiere);
-            denominateur += LesMatECTS.get(matiere);
+            numerateur = numerateur+ etudiant.notes().get(matiere) * LesMatECTS.get(matiere);
+            denominateur = denominateur +LesMatECTS.get(matiere);//incremete denom mais beug 
         }
         return numerateur / denominateur;
     }
